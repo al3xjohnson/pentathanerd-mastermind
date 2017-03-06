@@ -67,7 +67,7 @@ namespace Pentathanerd.Mastermind
             }
             else
             {
-                if (_connectedPlayers.Count == 0 && (GameMode == GameMode.Multiplayer))
+                if (_connectedPlayers.Count == 0 && GameMode == GameMode.Multiplayer)
                 {
                     _multiplayerGameIsActive = false;
                 }
@@ -78,14 +78,7 @@ namespace Pentathanerd.Mastermind
                 }
                 else
                 {
-                    if (GameMode == GameMode.Multiplayer)
-                    {
-                        Clients.Caller.enableTeamRegistration();
-                    }
-                    else
-                    {
-                        RegisterPlayer();
-                    }
+                    Clients.Caller.enableTeamRegistration();
                 }
             }
 
@@ -143,7 +136,7 @@ namespace Pentathanerd.Mastermind
             }
             else
             {
-                if (!_connectedPlayers.Values.Any(x => x.Username == teamName))
+                if (_connectedPlayers.Values.All(x => x.Username != teamName))
                 {
                     RegisterPlayer();
                     var connectionId = Context.ConnectionId;
@@ -384,8 +377,8 @@ namespace Pentathanerd.Mastermind
 
         public static TimeSpan GetGameTime()
         {
-            var challengeTimeInSeconds = GameConfiguration.GameTime * 60.0 * 1000;
-            return new TimeSpan(0, 0, 0, 0, Convert.ToInt32(challengeTimeInSeconds));
+            var gameTimeInSeconds = GameConfiguration.GameTime * 60.0 * 1000;
+            return new TimeSpan(0, 0, 0, 0, Convert.ToInt32(gameTimeInSeconds));
         }
 
         public void SubmitGuess(string guessString)
