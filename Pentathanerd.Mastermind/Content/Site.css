@@ -1,0 +1,328 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.playArea{
+    margin-top: 45px;
+    width: 550px;
+}
+
+.helpRow {
+    border: 1px solid black;
+    height: 50px;
+}
+
+.helpContainer {
+    background-color: #ccc;
+    width: 100%;
+    height: 100%;
+}
+
+.levelCategoryContainer {
+    background-color: #ccc;
+    width: 100%;
+    height: 100%;
+}
+
+.levelCategory {
+    float: left;
+    font-size: 16px;
+    margin: 14px 0px 0px 30px;
+}
+
+.teamNameContainer {
+    text-align: center;
+}
+
+.gameRow {
+    border-bottom: 1px solid black;
+    border-right: 1px solid black;
+    border-left: 1px solid black;
+    height: 50px;
+}
+
+.answerRow {
+    height: 50px;
+    width: 50%;
+    margin: auto;
+    background-color: #ccc;
+}
+
+
+.roundContainer {
+    float: left;
+    width:5%;
+    height:100%;
+    background-color:#eee;
+}
+
+.round {
+    margin: 12px 0px 0px 5px;
+    font-size:18px;
+}
+
+.guessResultsContainer {
+    float: left;
+    width: 25%;
+    height: 100%;
+    background-color: #eee;
+}
+
+.userGuessContainer {
+    height: 100%;
+    width: 60%;
+    float: left;
+    background-color:#ddd;
+}
+
+.buttonContainer {
+    float:left;
+    width: 10%;
+    height:100%;
+    background-color:#ddd;
+}
+
+.challengeHistoryContainer {
+    width: 100%;
+    float: left;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.challengeHistory {
+    width: 100%;
+    height: 75px;
+    margin-bottom: 5px;
+}
+
+.challengeHistoryRecords {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.challengeHistoryPass {
+    background-color: rgba(0, 128, 0, .8);
+    color: white;
+}
+
+.challengeHistoryFail {
+    background-color: rgba(255, 0, 0, .8);
+}
+
+.challengeHistoryCategory {
+    font-size: 16px;
+    float: left;
+    width: 50%;
+    margin-top: 10px;
+    
+}
+
+.guessButtonDisplay {
+    display: none;
+}
+
+.js-active .guessButtonDisplay {
+    display: block;
+}
+.guessButton {
+    margin: 10px 0px 0px -10px;
+}
+
+.result {
+    float:left;
+    padding: 8%;
+    width:auto;
+    height:auto;
+    margin: 15px 0px 0px 10px;
+    border-radius:50%;
+    -moz-border-radius:50%;
+    -webkit-border-radius:50%;
+    -khtml-border-radius: 50%;
+}
+
+.noResult {
+    background-color: #ddd;
+}
+
+.guess {
+    float:left;    
+    width:45px;
+    height:45px;
+    margin: 2px -10px 0px 30px;
+    border-radius:50%;
+    -moz-border-radius:50%;
+    -webkit-border-radius:50%;
+    -khtml-border-radius: 50%;
+}
+
+.answer {
+    float:left;    
+    width:45px;
+    height:45px;
+    margin: 3px 0px 0px 18px;
+    border-radius:50%;
+    -moz-border-radius:50%;
+    -webkit-border-radius:50%;
+    -khtml-border-radius: 50%;
+}
+
+.helpContainer .guess {
+    margin: 2px -25px 0px 50px;
+}
+
+.guessNoGuess {
+    background-color: #bbb;
+}
+
+.guessYellow {
+    background-color: yellow;
+}
+
+.guessRed {
+    background-color: red;
+}
+
+.guessBlack {
+    background-color: black;
+}
+
+.guessBlue {
+    background-color: blue;
+}
+
+.guessWhite {
+    background-color: white;
+}
+
+.guessGreen {
+    background-color: green;
+}
+
+.guessOrange {
+    background-color: orange;
+}
+
+.guessPink {
+    background-color: pink;
+}
+
+.correctColorAndPosition {
+    background-color: black;
+}
+
+.correctColor {
+    background-color: white;
+}
+
+.timerContainer {
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 50px
+}
+
+.challengeTimer {
+    font-size:32px;
+}
+
+.gameTimer {
+    font-size:20px;
+}
+
+.scoreContainer {
+    width: 100%;
+    text-align: center;
+    margin-top: 50px;
+    font-size: 16px;
+}
+
+.scoreCategoryContainer {
+    width: 100%;
+    float: left;
+}
+
+.scoreCategory {
+    float: left;
+    width: 50%;
+}
+
+.totalScore {
+    font-size: 32px;
+}
+
+.celebrationGramContainer {
+    padding-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.celebrationGramContainer img {
+    max-width: 300px;
+    max-height: 300px;
+}
+
+.gameControlContainer {
+    width: 100%;
+    margin: 10px auto 10px auto;
+    text-align: center;
+}
+
+.finalCountdown {
+    color: red;
+}
+
+.leaderBoardCategoryHeader {
+    text-align: center;
+}
+
+.leaderboardRow {
+    width: 100%;
+    font-size: 18px;
+}
+
+.leaderboardRank {
+    float: left;
+    width: 10%;
+}
+
+.leaderboardName {
+    float: left;
+    width: 70%;
+}
+
+.leaderboardValue {
+    float: left;
+    width: 20%;
+}
+
+.userGuessContainerFive .guess {
+    width: 35px;
+    height: 35px;
+    margin: 8px -10px 0px 30px;
+}
+
+.guessResultsContainerFive .result {
+    padding: 6%;
+    margin: 18px 0px 0px 10px;
+}

@@ -1,0 +1,83 @@
+﻿@model List<Pentathanerd.Mastermind.Models.LeaderboardModel>
+@{
+    ViewBag.Title = "Leaderboard";
+}
+<h2>Leaderboard</h2>
+<div class="row">
+    <div class="col-md-3">
+        <div class="leaderBoardCategoryHeader">
+            <h3>Score</h3>
+        </div>
+        <div class="js-leaderboardContainer">
+            @{
+                var rank = 1;
+            }
+            @foreach (var m in Model.OrderByDescending(x => x.Score).Where(x => x.Score != 0.0))
+            {
+                <div class="leaderboardRow">
+                    <div class="leaderboardRank">@rank.</div>
+                    <div class="leaderboardValue">@m.Score</div>
+                    <div class="leaderboardName">@m.TeamName</div>
+                </div>
+                rank++;
+            }
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="leaderBoardCategoryHeader">
+            <h3>Rounds Completed</h3>
+        </div>
+        <div class="js-leaderboardContainer">
+            @{
+                var f = 1;
+            }
+            @foreach (var m in Model.OrderByDescending(x => x.RoundsCompleted).Where(x => x.RoundsCompleted > 0))
+            {
+                <div class="leaderboardRow">
+                    <div class="leaderboardRank">@f.</div>
+                    <div class="leaderboardValue">@m.RoundsCompleted</div>
+                    <div class="leaderboardName">@m.TeamName</div>
+                </div>
+                f++;
+            }
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="leaderBoardCategoryHeader">
+            <h3>Fastest</h3>
+        </div>
+        <div class="js-leaderboardContainer">
+            @{
+                var g = 1;
+            }
+            @foreach (var m in Model.OrderBy(x => x.Fastest).Where(x => x.Fastest.TotalSeconds > 0))
+            {
+                <div class="leaderboardRow">
+                    <div class="leaderboardRank">@g.</div>
+                    <div class="leaderboardValue">@m.Fastest.ToString(@"mm\:ss")</div>
+                    <div class="leaderboardName">@m.TeamName</div>
+                </div>
+                g++;
+            }
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="leaderBoardCategoryHeader">
+            <h3>Fewest Moves</h3>
+        </div>
+        <div class="js-leaderboardContainer">
+            @{
+                var h = 1;
+            }
+            @foreach (var m in Model.OrderBy(x => x.FewestMoves).Where(x => x.FewestMoves > 0))
+            {
+                <div class="leaderboardRow">
+                    <div class="leaderboardRank">@h.</div>
+                    <div class="leaderboardValue">@m.FewestMoves</div>
+                    <div class="leaderboardName">@m.TeamName</div>
+                </div>
+                h++;
+            }
+        </div>
+    </div>
+</div>

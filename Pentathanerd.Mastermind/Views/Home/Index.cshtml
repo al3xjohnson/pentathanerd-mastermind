@@ -1,0 +1,212 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+@section Scripts
+{
+    @Scripts.Render("~/bundles/signalR")
+    @Scripts.Render("/signalr/hubs")
+    @Scripts.Render("~/Scripts/gameController.js")
+    @Scripts.Render("~/Scripts/gamePlayHub.js")
+}
+<div class="row js-playAreaContainer" style="min-height: 500px; display: none;">
+    <div class="col-md-3">
+        <div class="timerContainer">
+            Challenge Time
+            <div class="js-challengeTimer challengeTimer">00:00</div>
+            <div class="js-gameTimeContainer gameTimeContainer" style="display: none;">
+                <hr/>
+                Game Time
+                <div class="js-gameTimer gameTimer">00:00</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="js-playArea playArea">
+            <div class="js-teamNameContainer teamNameContainer" style="display: none;">
+                <h2 class="js-teamName">Team Name</h2>
+            </div>
+            <div class="helpRow">
+                <div class="levelCategoryContainer">
+                    <div class="levelCategory">
+                        Level: <span class="js-level">--</span>
+                    </div>
+                    <div class="levelCategory">
+                        Colors: <span class="js-colors">--</span>
+                    </div>
+                    <div class="levelCategory">
+                        Guesses: <span class="js-availableGuesses">--</span>
+                    </div>
+                    <div class="levelCategory">
+                        Duplicate Colors: <span class="js-duplicates">--</span>
+                    </div>
+                </div>
+            </div>
+            <div class="js-gameRows">
+                <div class="js-gameRow gameRow" data-round="1">
+                    <div class="roundContainer">
+                        <div class="js-round round">1</div>
+                    </div>
+                    <div class="js-guessResultContainer guessResultsContainer guessResultsContainerFive">
+                        <div class="js-result result noResult"></div>
+                        <div class="js-result result noResult"></div>
+                        <div class="js-result result noResult"></div>
+                        <div class="js-result result noResult"></div>
+                    </div>
+
+                    <div class="js-userGuessContainer userGuessContainer userGuessContainerFive">
+                        <div class="js-guess guess guessNoGuess" data-colorId="-1"></div>
+                        <div class="js-guess guess guessNoGuess" data-colorId="-1"></div>
+                        <div class="js-guess guess guessNoGuess" data-colorId="-1"></div>
+                        <div class="js-guess guess guessNoGuess" data-colorId="-1"></div>
+                    </div>
+
+                    <div class="buttonContainer">
+                        <div class="guessButtonDisplay">
+                            <div class="js-submit guessButton btn btn-sm btn-info" disabled="true">guess</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="js-gameControlContainer gameControlContainer" style="display: none;">
+                <div class="js-ready btn btn-sm btn-info" style="display: none;">ready</div>
+                <div class="js-startGame btn btn-sm btn-success" style="display: none;">start</div>
+            </div>
+        </div>
+        <div class="js-celebrationGramContainer celebrationGramContainer" style="display: none;">
+            <img class="js-celebrationGram"/>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="scoreContainer">
+            Score
+            <div class="js-totalScore totalScore">
+                0
+            </div>
+            <hr/>
+            <div class="scoreCategoryContainer">
+                <div class="scoreCategory">
+                    Solved: <span class="js-solvedCount">0</span>
+                </div>
+                <div class="scoreCategory">
+                    Failed: <span class="js-failedCount">0</span>
+                </div>
+            </div>
+        </div>
+        <div class="js-challengeHistoryContainer challengeHistoryContainer" style="display: none;">
+            <h3>Challenge History</h3>
+            <div class="js-challengeHistoryRecords challengeHistoryRecords">
+                <div class="js-challengeHistory challengeHistory" data-id="1">
+                    <div class="challengeHistoryCategory">
+                        Level: <span class="js-historyLevel">1</span>
+                    </div>
+                    <div class="challengeHistoryCategory">
+                        Points: <span class="js-historyPoints">0</span>
+                    </div>
+                    <div class="challengeHistoryCategory">
+                        Guesses: <span class="js-historyGuesses">0</span>
+                    </div>
+                    <div class="challengeHistoryCategory">
+                        Time: <span class="js-historyTime">00:00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row js-viewingAreaContainer" style="min-height: 500px;">
+    <div class="js-leaderboardScoreContainer col-md-3">
+        <div class="leaderBoardCategoryHeader">
+            <h3>Score</h3>
+        </div>
+        <div class="js-leaderboardContainer">
+            <div class="js-leaderboardRow leaderboardRow">
+                <div class="js-leaderboardRank leaderboardRank">--</div>
+                <div class="js-leaderboardValue leaderboardValue">--</div>
+                <div class="js-leaderboardName leaderboardName">--</div>
+            </div>
+        </div>
+    </div>
+    <div class="js-leaderboardRoundsContainer col-md-3">
+        <div class="leaderBoardCategoryHeader">
+            <h3>Rounds Completed</h3>
+        </div>
+        <div class="js-leaderboardContainer">
+            <div class="js-leaderboardRow leaderboardRow">
+                <div class="js-leaderboardRank leaderboardRank">--</div>
+                <div class="js-leaderboardValue leaderboardValue">--</div>
+                <div class="js-leaderboardName leaderboardName">--</div>
+            </div>
+        </div>
+    </div>
+    <div class="js-leaderboardFastestContainer col-md-3">
+        <div class="leaderBoardCategoryHeader">
+            <h3>Fastest</h3>
+        </div>
+        <div class="js-leaderboardContainer">
+            <div class="js-leaderboardRow leaderboardRow">
+                <div class="js-leaderboardRank leaderboardRank">--</div>
+                <div class="js-leaderboardValue leaderboardValue">--</div>
+                <div class="js-leaderboardName leaderboardName">--</div>
+            </div>
+        </div>
+    </div>
+    <div class="js-leaderboardFewestContainer col-md-3">
+        <div class="leaderBoardCategoryHeader">
+            <h3>Fewest Moves</h3>
+        </div>
+        <div class="js-leaderboardContainer">
+            <div class="js-leaderboardRow leaderboardRow">
+                <div class="js-leaderboardRank leaderboardRank">--</div>
+                <div class="js-leaderboardValue leaderboardValue">--</div>
+                <div class="js-leaderboardName leaderboardName">--</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="teamNameSelectionModal" class="modal" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Team Registration</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="teamNameInput">Team Name:</label>
+                    <input id="teamNameInput" class="form-control js-teamNameInput" type="text"/>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success pull-right js-registerTeam" data-dismiss="modal">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="correctAnswerModal" class="modal" role="dialog" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Correct Answer</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <div class="answerRow">
+                        <div class="js-answer answer"></div>
+                        <div class="js-answer answer"></div>
+                        <div class="js-answer answer"></div>
+                        <div class="js-answer answer"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<audio id="soundEffectBeep" src="~/Content/microwave-beep.wav"></audio>
+<audio id="soundEffectBuzzer" src="~/Content/buzzer.wav"></audio>
