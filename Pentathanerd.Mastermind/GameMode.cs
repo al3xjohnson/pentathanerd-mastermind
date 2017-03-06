@@ -7,7 +7,6 @@ namespace Pentathanerd.Mastermind
     public enum GameMode
     {
         SinglePlayer = 0,
-        Multiplayer = 1,
-        MultiplayerRestricted = 2 
+        Multiplayer = 1
     }
 }

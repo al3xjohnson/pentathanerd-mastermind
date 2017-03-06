@@ -21,18 +21,6 @@ namespace Pentathanerd.Mastermind
         private static List<LevelConfiguration> LevelConfigurations => LevelConfigurationDictionary.LevelConfigurations;
         private static TimerExtension GameClock { get; set; }
 
-        private static Dictionary<string, TeamProfile> _expectedTeams = new Dictionary<string, TeamProfile>
-        {
-            { "1", new TeamProfile {TeamName = "!Cheaters"} },
-            { "2", new TeamProfile {TeamName = "Dammit 404's Here"} },
-            { "3", new TeamProfile {TeamName = "APentathaNorbs"} },
-            { "4", new TeamProfile {TeamName = "Team .NDT"} },
-            { "5", new TeamProfile {TeamName = "Alternative Facts"} },
-            { "6", new TeamProfile {TeamName = "The Scope Creeps"} },
-            { "7", new TeamProfile {TeamName = "Team NX"} },
-            { "8", new TeamProfile {TeamName = "Unacceptable!"} }
-        };
-
         private static List<LeaderboardStats> LeaderboardStats = new List<LeaderboardStats>();
 
         private static Random Random
@@ -79,7 +67,7 @@ namespace Pentathanerd.Mastermind
             }
             else
             {
-                if (_connectedPlayers.Count == 0 && (GameMode == GameMode.Multiplayer || GameMode == GameMode.MultiplayerRestricted))
+                if (_connectedPlayers.Count == 0 && (GameMode == GameMode.Multiplayer))
                 {
                     _multiplayerGameIsActive = false;
                 }
@@ -90,7 +78,7 @@ namespace Pentathanerd.Mastermind
                 }
                 else
                 {
-                    if (GameMode == GameMode.MultiplayerRestricted || GameMode == GameMode.Multiplayer)
+                    if (GameMode == GameMode.Multiplayer)
                     {
                         Clients.Caller.enableTeamRegistration();
                     }
@@ -131,7 +119,7 @@ namespace Pentathanerd.Mastermind
             }
             _connectedUsers.Remove(connectionId);
 
-            if (_connectedPlayers.Count == 0 && (GameMode == GameMode.Multiplayer || GameMode == GameMode.MultiplayerRestricted))
+            if (_connectedPlayers.Count == 0 && GameMode == GameMode.Multiplayer)
             {
                 _multiplayerGameIsActive = false;
                 EndGame();
@@ -201,7 +189,7 @@ namespace Pentathanerd.Mastermind
             };
             _connectedPlayers.TryAdd(connectionId, playerStats);
 
-            if (GameMode == GameMode.Multiplayer || GameMode == GameMode.MultiplayerRestricted)
+            if (GameMode == GameMode.Multiplayer)
             {
                 if (_connectedPlayers.Count >= GameConfiguration.NumberOfTeams)
                 {
@@ -215,7 +203,7 @@ namespace Pentathanerd.Mastermind
             if (!_connectedPlayers.Keys.Contains(Context.ConnectionId))
                 return;
 
-            if (GameMode == GameMode.Multiplayer || GameMode == GameMode.MultiplayerRestricted)
+            if (GameMode == GameMode.Multiplayer)
             {
                 if (_multiplayerGameIsActive)
                     return;
@@ -408,7 +396,7 @@ namespace Pentathanerd.Mastermind
             if (player == null)
                 return;
 
-            if (GameMode == GameMode.Multiplayer || GameMode == GameMode.MultiplayerRestricted)
+            if (GameMode == GameMode.Multiplayer)
             {
                 if (!_multiplayerGameIsActive)
                     return;
@@ -466,7 +454,7 @@ namespace Pentathanerd.Mastermind
                         }
                     }
 
-                    if (GameMode == GameMode.Multiplayer || GameMode == GameMode.MultiplayerRestricted)
+                    if (GameMode == GameMode.Multiplayer)
                     {
                         if (GameClock.EndTime < updatedEndTime)
                         {
