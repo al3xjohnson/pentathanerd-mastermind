@@ -37,10 +37,13 @@ namespace Pentathanerd.Mastermind
             {
                 Challenge.Solved = true;
                 Challenge.ActiveChallenge = false;
+
                 var roundBonus = CalculateRoundBonus();
                 Challenge.Score += roundBonus;
+
                 var timeBonus = CalculateTimeBonus();
                 Challenge.Score += timeBonus;
+
                 return Challenge;
             }
 
